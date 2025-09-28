@@ -12,7 +12,8 @@
  */
 int main(int argc, char **argv)
 {
-	int a, b;
+	int a;
+	int b;
 	int (*op)(int, int);
 
 	if (argc != 4) { printf("Error\n"); return (98); }

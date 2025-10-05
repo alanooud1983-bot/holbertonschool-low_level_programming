@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include "lists.h"
 
-/* print each node; if str==NULL print [0] (nil); return number of nodes */
+/**
+ * print_list - Prints all the elements of a list_t list
+ * @h: Pointer to the list_t list to print
+ *
+ * Return: The number of nodes
+ */
 size_t print_list(const list_t *h)
 {
 	size_t count = 0;

@@ -39,15 +39,18 @@ int main(int argc, char *argv[])
 	if (fd_to == -1)
 		error_exit(99, "Error: Can't write to %s\n", argv[2]);
 
-	while ((r = read(fd_from, buffer, 1024)) > 0)
+	while (1)
 	{
+		r = read(fd_from, buffer, 1024);
+		if (r == -1)
+			error_exit(98, "Error: Can't read from file %s\n", argv[1]);
+		if (r == 0)
+			break;
+
 		w = write(fd_to, buffer, r);
 		if (w != r)
 			error_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
-
-	if (r == -1)
-		error_exit(98, "Error: Can't read from file %s\n", argv[1]);
 
 	if (close(fd_from) == -1)
 	{

@@ -40,7 +40,11 @@ int main(int argc, char *argv[])
 	{
 		wr_bytes = write(fd_to, buffer, rd_bytes);
 		if (wr_bytes != rd_bytes)
+		{
+			close(fd_from);
+			close(fd_to);
 			error_exit(99, "Error: Can't write to %s\n", argv[2]);
+		}
 	}
 
 	if (rd_bytes == -1)

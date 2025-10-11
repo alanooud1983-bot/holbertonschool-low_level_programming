@@ -34,7 +34,10 @@ int main(int argc, char *argv[])
 
 	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_to == -1)
+	{
+		close(fd_from);
 		error_exit(99, "Error: Can't write to %s\n", argv[2]);
+	}
 
 	while ((rd_bytes = read(fd_from, buffer, 1024)) > 0)
 	{
@@ -48,7 +51,11 @@ int main(int argc, char *argv[])
 	}
 
 	if (rd_bytes == -1)
+	{
+		close(fd_from);
+		close(fd_to);
 		error_exit(98, "Error: Can't read from file %s\n", argv[1]);
+	}
 
 	if (close(fd_from) == -1)
 	{

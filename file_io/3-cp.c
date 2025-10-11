@@ -15,7 +15,7 @@ void error_exit(int code, const char *message, const char *arg)
 }
 
 /**
- * main - copies content of one file to another
+ * main - copies the content of a file to another file
  * @argc: argument count
  * @argv: argument vector
  * Return: 0 on success
@@ -39,16 +39,13 @@ int main(int argc, char *argv[])
 	if (fd_to == -1)
 		error_exit(99, "Error: Can't write to %s\n", argv[2]);
 
-	while (1)
+	while ((r = read(fd_from, buffer, 1024)) != 0)
 	{
-		r = read(fd_from, buffer, 1024);
 		if (r == -1)
 			error_exit(98, "Error: Can't read from file %s\n", argv[1]);
-		if (r == 0)
-			break;
 
 		w = write(fd_to, buffer, r);
-		if (w != r)
+		if (w == -1 || w != r)
 			error_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
 

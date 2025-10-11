@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 /**
- * error_exit - Prints an error message and exits with a specific code
+ * error_exit - prints an error message to stderr and exits
  * @code: exit code
- * @message: message to print
- * @arg: extra argument (filename or fd)
+ * @message: format string
+ * @arg: argument (filename)
  */
 void error_exit(int code, const char *message, const char *arg)
 {
@@ -15,10 +15,9 @@ void error_exit(int code, const char *message, const char *arg)
 }
 
 /**
- * main - copies the content of a file to another file
- * @argc: number of arguments
- * @argv: array of arguments
- *
+ * main - copies content of one file to another
+ * @argc: argument count
+ * @argv: argument vector
  * Return: 0 on success
  */
 int main(int argc, char *argv[])
@@ -46,6 +45,7 @@ int main(int argc, char *argv[])
 		if (w != r)
 			error_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
+
 	if (r == -1)
 		error_exit(98, "Error: Can't read from file %s\n", argv[1]);
 

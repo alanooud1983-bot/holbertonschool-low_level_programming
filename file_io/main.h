@@ -4,6 +4,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void error_exit(int code, const char *message, const char *arg);
+int main(int ac, char **av);
 
 #endif

@@ -7,7 +7,8 @@
 #define BUF 1024
 
 /**
- * close_or_die - close fd or exit 100 @fd: file descriptor
+ * close_or_die - close fd or exit 100
+ * @fd: The file descriptor to be closed
  */
 static void close_or_die(int fd)
 {

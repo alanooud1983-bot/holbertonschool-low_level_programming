@@ -20,7 +20,6 @@ int _atoi(char *s)
 
     while (s[i] >= '0' && s[i] <= '9')
     {
-
         if (num > (unsigned int)(2147483647 / 10))
             return (sign == 1 ? 2147483647 : -2147483648);
 
